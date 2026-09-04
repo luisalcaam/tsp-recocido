@@ -3,7 +3,14 @@ pub struct Coordinates {
     pub(crate) longitude: f64,
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct CityId(u32);
+
+impl CityId {
+    pub fn new(id: u32) -> Self {
+        Self(id)
+    }
+}
 
 pub struct CityIndex(usize);
 

@@ -1,3 +1,4 @@
+#[derive(Debug)]
 pub struct Coordinates {
     pub(crate) latitude: f64,
     pub(crate) longitude: f64,
@@ -10,14 +11,42 @@ impl CityId {
     pub fn new(id: u32) -> Self {
         Self(id)
     }
+
+    
+    pub fn value(&self) -> u32 {
+        self.0
+    }
 }
+
+#[derive(Debug)]
+pub struct Connection {
+    city_u: CityId,
+    city_v: CityId,
+    distance: f64,
+}
+
+impl Connection {
+    pub fn new(city_u: CityId, city_v: CityId, distance: f64) -> Self {
+        Self {
+            city_u,
+            city_v,
+            distance,
+        }
+    }
+
+
+}
+
+
 
 pub struct CityIndex(usize);
 
+#[derive(Debug)]
 pub struct City {
     id: CityId,
     name: String,
     country: String,
+    population: u64,
     coordinates: Coordinates,
 }
 
@@ -26,12 +55,14 @@ impl City {
         id: CityId,
         name: String,
         country: String,
+        population: u64,
         coordinates: Coordinates,
     ) -> Self {
         Self {
             id,
             name,
             country,
+            population,
             coordinates,
         }
     }
@@ -52,6 +83,7 @@ mod tests {
             CityId(13),
             String::from("Mexico City"),
             String::from("Mexico"),
+            8720916,
             coordinates,
         );
 

@@ -58,12 +58,12 @@ impl ThresholdAccepting {
                 r += f_s_prime;
             }
         }
-
-        let avg = if c > 0 { r / (c as f64) } else { 0.0 };
+        //println!("Num aceptados: {:5}",c);
+        let avg = if c > 0 { r / (self.l as f64) } else { 0.0 };
         (avg, s)
     }
 
-    //fn porcentaje_aceptados<P: ThresholdAcceptingProblem>(&self, problem: &P, s: &P::Solution, t: f64) -> f64 {
+
     pub fn per_accepted<P: ThresholdAcceptingProblem, R: Rng + ?Sized>(&self,
                                                                        problem: &P,
                                                                        s: &P::Solution,
@@ -72,16 +72,18 @@ impl ThresholdAccepting {
     ) -> f64 {
         let mut cnt = 0;
         let f_s = problem.objective_function(s);
+        
         for _ in 0..self.n_samples {
             let s_prime = problem.neighbor(s, rng);
             if problem.objective_function(&s_prime) <= f_s + t {
                 cnt += 1;
+        
             }
         }
         (cnt as f64) / (self.n_samples as f64)
     }
 
-    //fn busqueda_binaria<P: ThresholdAcceptingProblem>(&self, problem: &P, s: &P::Solution, t1: f64, t2: f64) -> f64
+    
 
     pub fn binary_search<P: ThresholdAcceptingProblem, R: Rng + ?Sized>(&self,
                                                                         problem: &P,
@@ -106,7 +108,7 @@ impl ThresholdAccepting {
     }
 
 
-    // fn temperatura_inicial<P: ThresholdAcceptingProblem>(&self, problem: &P, s: &P::Solution, mut t_init: f64) -> f64 {
+
     pub fn temp_init<P: ThresholdAcceptingProblem, R: Rng + ?Sized>(&self,
                                                                     problem: &P,
                                                                     s: &P::Solution,
@@ -157,9 +159,9 @@ impl ThresholdAccepting {
 
         let mut iter_lote = 0;
         
-        while t > self.epsilon {
+        while t > self.epsilon { 
             let mut q = f64::INFINITY;
-            while p <= q {
+            while p <= q { // Equilibrio termico.
                 q = p;
                 let (avg_cost,new_s) = self.calcula_lote(problem, s.clone(), t, &mut rng);
                 p = avg_cost;

@@ -53,10 +53,12 @@ fn main() -> rusqlite::Result<()> {
     println!("Costo inicial: {}", problem.cost(&init_route));
     println!("Es factible inicialmente: {}", problem.is_feasible(&init_route));
 
+
+    // Parámetros libres.
     let l = 5000;
-    let max_attempts = l * 10;
+    let max_attempts = l * 2;
     let epsilon = 0.001;
-    let phi = 0.975;
+    let phi = 0.95;
 
     let solver = ThresholdAccepting::new(l, max_attempts, epsilon, phi);
 

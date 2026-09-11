@@ -20,9 +20,9 @@ impl CityId {
 
 #[derive(Debug)]
 pub struct Connection {
-    city_u: CityId,
-    city_v: CityId,
-    distance: f64,
+    pub(crate) city_u: CityId,
+    pub(crate) city_v: CityId,
+    pub(crate) distance: f64,
 }
 
 impl Connection {
@@ -34,12 +34,35 @@ impl Connection {
         }
     }
 
+    pub fn city_u(&self) -> CityId {
+        self.city_u
+    }
+
+    pub fn city_v(&self) -> CityId {
+        self.city_v
+    }
+    
+    pub fn distance(&self) -> f64 {
+        self.distance
+    }
+
 
 }
 
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub struct CityIndex(pub usize);
 
-pub struct CityIndex(usize);
+impl CityIndex {
+    pub fn new(index: usize) -> Self {
+        Self(index)
+    }
+
+    pub fn value(&self) -> usize {
+        self.0
+    }
+}
+
 
 #[derive(Debug)]
 pub struct City {
@@ -65,6 +88,10 @@ impl City {
             population,
             coordinates,
         }
+    }
+
+    pub fn id(&self) -> CityId {
+        self.id
     }
 }
 

@@ -1,7 +1,7 @@
 use std::fs;
 use std::io;
 
-use crate::city::city::CityId;
+use crate::domain::city::CityId;
 
 pub fn parser_file(path: &str) -> io::Result<Vec<CityId>> {
     let contents = fs::read_to_string(path)?;

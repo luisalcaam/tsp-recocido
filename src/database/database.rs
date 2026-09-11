@@ -1,7 +1,7 @@
 use rusqlite::{Connection, Result};
 
-use crate::city::city::{City, CityId, Coordinates};
-use crate::city::city::Connection as CityConnection;
+use crate::domain::city::{City, CityId, Coordinates};
+use crate::domain::city::Connection as CityConnection;
 
 pub fn load(
     path: &str,

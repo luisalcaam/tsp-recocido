@@ -1,6 +1,8 @@
+#![allow(unused)]
 use super::city::CityIndex;
 
 const MAX_CITIES: usize = 150;
+
 
 pub struct Graph {
     adj: [[f64; MAX_CITIES]; MAX_CITIES],
@@ -43,15 +45,15 @@ impl Graph {
         self.adj[j][i] = distance;
     }
 
-    pub fn weight(
+    pub fn get_distance(
         &self,
         u: CityIndex,
         v: CityIndex,
     ) -> Option<f64> {
-        let weight = self.adj[u.value()][v.value()];
+        let distance = self.adj[u.value()][v.value()];
 
-        if weight.is_finite() {
-            Some(weight)
+        if distance.is_finite() {
+            Some(distance)
         } else {
             None
         }

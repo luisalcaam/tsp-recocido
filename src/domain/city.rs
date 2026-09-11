@@ -1,3 +1,5 @@
+#![allow(unused)]
+
 #[derive(Debug)]
 pub struct Coordinates {
     pub(crate) latitude: f64,

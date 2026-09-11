@@ -1,3 +1,5 @@
+#![allow(unused)]
+
 use super::city::Coordinates;
 
 const EARTH_RADIUS: f64 = 6_373_000.0;
@@ -48,7 +50,6 @@ mod tests {
             longitude: -99.1385999999999968,
         };
         assert_eq!(natural_distance(&c,&b), natural_distance(&b,&c));
-        // Según Chatcito - XD - CDMX a Beijing 12500 km
-        // assert_eq!(natural_distance(&c,&b),12.50);
+
     }    
 }

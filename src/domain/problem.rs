@@ -106,7 +106,11 @@ impl Problem {
         true            
     }
 
-    
+    pub fn city_id(&self, index: CityIndex) -> CityId {
+        self.cities[index.0].id()
+    }
+
+
 }
 
 impl ThresholdAcceptingProblem for Problem {

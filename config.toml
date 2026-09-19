@@ -1,0 +1,13 @@
+l = 2000
+max_attempts = 4000
+
+epsilon = 0.0000001
+phi = 0.95
+
+p_target = 0.90
+n_samples = 100
+epsilon_p = 0.01
+
+initial_t_guess = 8.0
+
+seed = 1432277707348111984

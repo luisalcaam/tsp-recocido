@@ -24,16 +24,19 @@ impl ThresholdAccepting {
         l: usize,
         max_attempts: usize,
         epsilon: f64,
-        phi: f64
+        phi: f64,
+        p_target: f64,
+        n_samples: usize,
+        epsilon_p: f64,
     ) -> Self {
         Self {
             l,
             max_attempts,
             epsilon,
             phi,
-            p_target: 0.90, // Entre 0.85 y 0.95
-            n_samples: 100,
-            epsilon_p : 0.01,
+            p_target,
+            n_samples,
+            epsilon_p,
         }
     }
 
@@ -58,7 +61,6 @@ impl ThresholdAccepting {
                 r += f_s_prime;
             }
         }
-        //println!("Num aceptados: {:5}",c);
         let avg = if c > 0 { r / (self.l as f64) } else { 0.0 };
         (avg, s)
     }
@@ -161,7 +163,7 @@ impl ThresholdAccepting {
         
         while t > self.epsilon { 
             let mut q = f64::INFINITY;
-            while p <= q { // Equilibrio termico.
+            while p < q {
                 q = p;
                 let (avg_cost,new_s) = self.calcula_lote(problem, s.clone(), t, &mut rng);
                 p = avg_cost;
@@ -177,7 +179,8 @@ impl ThresholdAccepting {
 
             iter_lote += 1;
 
-            println!("[Lote {:4}] T: {:10.4} | Prom. Aceptados: {:10.2} | Mejor Costo: {:10.2}",
+
+            println!("[Lote {:4}] T: {:10.10} | Prom. Aceptados: {:10.2} | Mejor Costo: {:10.2}",
                 iter_lote, t, p, best_score );
             
             t *= self.phi;

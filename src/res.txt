@@ -1,0 +1,56 @@
+seed: 4291138604856161588
+    let l = 1500;
+    let max_attempts = l * 2;
+    let epsilon = 0.0000001;
+    let phi = 0.9;
+
+
+--- res --
+seed: 4291138604856161588
+    let l = 1500;
+    let max_attempts = l * 2;
+    let epsilon = 0.0000001;
+    let phi = 0.95;
+
+---
+Mejor costo encontrado: 98734482.79
+Es factible: true
+Eval: 0.13663804152018777
+seed: 4291138604856161588
+    let l = 2000;
+    let max_attempts = l * 2;
+    let epsilon = 0.0000001;
+    let phi = 0.95;
+
+
+
+---
+
+0.13701297427072165
+1383630902705978860
+    let l = 1000;
+    let max_attempts = l * 2;
+    let epsilon = 0.0000001;
+    let phi = 0.9;
+
+
+--- Resultados ---
+Mejor costo encontrado: 98984665.78000002
+Es factible: true
+Eval: 0.13698426821636617
+    let l = 1000;
+    let max_attempts = l * 2;
+    let epsilon = 0.0000001;
+    let phi = 0.9;
+    seed: 6452727013038562883
+
+
+--- Resultados ---
+Mejor costo encontrado: 98899583.77
+Es factible: true
+Eval: 0.13686652374770136
+Seed: 10058187491655164539
+let l = 2000;
+    let max_attempts = l * 2;
+    let epsilon = 50.0; // 0.0000001;
+    let phi = 0.9;
